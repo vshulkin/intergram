@@ -89,5 +89,5 @@ Currently you can customize all visible texts and the main widget color by setti
 
 2. Run the new created docker container with command `docker run --port 8080:8080 --name intergram -e "TELEGRAM_TOKEN=<your_token>" -e "CHAT_ID=<your_chatId>" -d intergram:latest`
 
-3. Have fun (visit http://<yourserver>:8080/)
+3. Have fun (visit http://`<yourserver>`:8080/)
 
