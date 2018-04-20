@@ -30,8 +30,6 @@ app.post('/hook', function(req, res){
             let replyText = reply.text || "";
             let userId = replyText.split(':')[0];
             io.emit(chatId + "-" + userId, {name, text, from: 'admin'});
-        } else if (text){
-            io.emit(chatId, {name, text, from: 'admin'});
         }
 
     } catch (e) {
@@ -46,7 +44,7 @@ io.on('connection', function(client){
 
     client.on('register', function(registerMsg){
         let userId = registerMsg.userId;
-        let chatId = registerMsg.chatId;
+        let chatId = process.env.CHAT_ID || registerMsg.chatId;
         let messageReceived = false;
         console.log("useId " + userId + " connected to chatId " + chatId);
 
@@ -92,6 +90,3 @@ http.listen(process.env.PORT || 3000, function(){
     console.log('listening on port:' + (process.env.PORT || 3000));
 });
 
-app.get("/.well-known/acme-challenge/:content", (req, res) => {
-    res.send(process.env.CERTBOT_RESPONSE);
-});

@@ -50,8 +50,6 @@ Currently you can customize all visible texts and the main widget color by setti
 <script id="intergram" type="text/javascript" src="https://www.intergram.xyz/js/widget.js"></script>
 ```
 
-<p align="center"> <img src="docs/hello.jpg"/> </p>
-
 ### Initial Footprint
   - Using [Preact](https://github.com/developit/preact) helped creating a pretty minimal `js` bundle.
   - The widget injection script is about 5KB gziped and executes only after the host page finished loading ('onload' event).
@@ -65,6 +63,10 @@ Currently you can customize all visible texts and the main widget color by setti
 2. Deploy this repo to your own chat server. 
   - Clone it locally and install or if you use Heroku, fork this repository and point the new app to it.
   - Set an .env variable named `TELEGRAM_TOKEN` with the value you got from @BotFather
+  - Set an .env variable named `CHAT_ID` to limit the BOT to a ChatID and prevent Abuse.
+  - Set an .env variable named `PORT` to configure a custom port (default=3000).
+  - Run `npm run postinstall`
+  - Start the server with command `npm start`
 
 3. Point the bot webhook to your bot server by making a `GET` request to the following url
   `https://api.telegram.org/bot<TOKEN>/setWebhook?url=<Server url>/hook`
@@ -81,3 +83,11 @@ Currently you can customize all visible texts and the main widget color by setti
   <script id="intergram" type="text/javascript" src="<Server url>/js/widget.js"></script>
   ```
 6. :tada:
+
+### Deploy using Docker
+1. Execute `docker build . -t intergram:latest
+
+2. Run the new created docker container with command `docker run --port 8080:8080 --name intergram -e "TELEGRAM_TOKEN=<your_token>" -e "CHAT_ID=<your_chatId>" -d intergram:latest`
+
+3. Have fun (visit http://<yourserver>:8080/)
+
