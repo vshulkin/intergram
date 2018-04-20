@@ -85,7 +85,7 @@ Currently you can customize all visible texts and the main widget color by setti
 6. :tada:
 
 ### Deploy using Docker
-1. Execute `docker build . -t intergram:latest
+1. Execute `docker build . -t intergram:latest`
 
 2. Run the new created docker container with command `docker run --port 8080:8080 --name intergram -e "TELEGRAM_TOKEN=<your_token>" -e "CHAT_ID=<your_chatId>" -d intergram:latest`
 
